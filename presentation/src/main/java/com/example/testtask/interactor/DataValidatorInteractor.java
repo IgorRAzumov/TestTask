@@ -18,7 +18,7 @@ public class DataValidatorInteractor implements IDataValidatorInteractor {
 
     @Override
     public Single<Boolean> checkAuthPassword(String password) {
-        return Single.fromCallable(() -> check(password, EMAIL_REGEX));
+        return Single.fromCallable(() -> check(password, PASSWORD_REGEX));
     }
 
     private boolean check(String value, String regex) {

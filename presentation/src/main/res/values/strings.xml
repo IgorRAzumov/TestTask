@@ -3,4 +3,5 @@
     <string name="common_email">Электронная почта</string>
     <string name="common_password">Пароль</string>
     <string name="common_entry">Войти</string>
+    <string name="sign_in_authorisation">Авторизация</string>
 </resources>
