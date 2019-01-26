@@ -32,11 +32,14 @@ ext.versionDagger = '2.20'
 ext.versionJUnit = '4.12'
 ext.versionTestRuner = '1.0.2'
 ext.versionEspresso = '3.0.2'
+ext.versionTimber = '4.7.1'
 
 
 dependencies {
     implementation project(":domain")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "com.jakewharton.timber:timber:$versionTimber"
 
     implementation "io.reactivex.rxjava2:rxjava:$versionRx"
 

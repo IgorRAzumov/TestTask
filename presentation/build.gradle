@@ -31,6 +31,7 @@ dependencies {
     ext.versionMoxy = '1.5.5'
 
     ext.versionRx = '2.2.2'
+    ext.versionRxAndroid= '2.1.0'
 
     ext.versionRetrofit = '2.5.0'
     ext.versionOkHttp = '3.12.1'
@@ -66,6 +67,7 @@ dependencies {
         implementation "com.squareup.okhttp3:logging-interceptor:$versionOkHttp"
 
         implementation "io.reactivex.rxjava2:rxjava:$versionRx"
+        implementation "io.reactivex.rxjava2:rxandroid:$versionRxAndroid"
 
         implementation "com.google.dagger:dagger-android-support:$versionDagger"
         annotationProcessor "com.google.dagger:dagger-compiler:$versionDagger"

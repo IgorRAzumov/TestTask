@@ -1,4 +1,4 @@
 package com.example.domain.model.weather;
 
-public class WeatherForecast {
+public class WeatherForecast{
 }

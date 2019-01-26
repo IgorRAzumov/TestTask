@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class NetworkModule {
-    private static final String WEATHER_URL = "https://restapi.twick.e-legion.amdemo.ru/api/";
+    private static final String WEATHER_URL = "https://api.weather.yandex.ru/v1/";
 
 
     @Provides
@@ -43,8 +43,7 @@ public class NetworkModule {
     @Named("defaultOkHttp")
     @Provides
     public OkHttpClient defaultOkHttpClient() {
-        return new OkHttpClient.Builder()
-                .build();
+        return new OkHttpClient.Builder().build();
     }
 
     @Named("interceptOkHttp")

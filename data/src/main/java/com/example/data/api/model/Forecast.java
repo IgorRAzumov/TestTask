@@ -1,35 +1,40 @@
+
 package com.example.data.api.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Forecast {
-    @SerializedName("code")
-    @Expose
-    private String code;
     @SerializedName("date")
     @Expose
     private String date;
-    @SerializedName("day")
+    @SerializedName("date_ts")
     @Expose
-    private String day;
-    @SerializedName("high")
+    private Integer dateTs;
+    @SerializedName("week")
     @Expose
-    private String high;
-    @SerializedName("low")
+    private Integer week;
+    @SerializedName("sunrise")
     @Expose
-    private String low;
-    @SerializedName("text")
+    private String sunrise;
+    @SerializedName("sunset")
     @Expose
-    private String text;
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
+    private String sunset;
+    @SerializedName("rise_begin")
+    @Expose
+    private String riseBegin;
+    @SerializedName("set_end")
+    @Expose
+    private String setEnd;
+    @SerializedName("moon_code")
+    @Expose
+    private Integer moonCode;
+    @SerializedName("moon_text")
+    @Expose
+    private String moonText;
+    @SerializedName("parts")
+    @Expose
+    private Parts parts;
 
     public String getDate() {
         return date;
@@ -39,35 +44,76 @@ public class Forecast {
         this.date = date;
     }
 
-    public String getDay() {
-        return day;
+    public Integer getDateTs() {
+        return dateTs;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setDateTs(Integer dateTs) {
+        this.dateTs = dateTs;
     }
 
-    public String getHigh() {
-        return high;
+    public Integer getWeek() {
+        return week;
     }
 
-    public void setHigh(String high) {
-        this.high = high;
+    public void setWeek(Integer week) {
+        this.week = week;
     }
 
-    public String getLow() {
-        return low;
+    public String getSunrise() {
+        return sunrise;
     }
 
-    public void setLow(String low) {
-        this.low = low;
+    public void setSunrise(String sunrise) {
+        this.sunrise = sunrise;
     }
 
-    public String getText() {
-        return text;
+    public String getSunset() {
+        return sunset;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setSunset(String sunset) {
+        this.sunset = sunset;
     }
+
+    public String getRiseBegin() {
+        return riseBegin;
+    }
+
+    public void setRiseBegin(String riseBegin) {
+        this.riseBegin = riseBegin;
+    }
+
+    public String getSetEnd() {
+        return setEnd;
+    }
+
+    public void setSetEnd(String setEnd) {
+        this.setEnd = setEnd;
+    }
+
+    public Integer getMoonCode() {
+        return moonCode;
+    }
+
+    public void setMoonCode(Integer moonCode) {
+        this.moonCode = moonCode;
+    }
+
+    public String getMoonText() {
+        return moonText;
+    }
+
+    public void setMoonText(String moonText) {
+        this.moonText = moonText;
+    }
+
+    public Parts getParts() {
+        return parts;
+    }
+
+    public void setParts(Parts parts) {
+        this.parts = parts;
+    }
+
 }
