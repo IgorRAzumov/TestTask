@@ -1,0 +1,14 @@
+apply plugin: 'java-library'
+
+ext.versionRx = '2.2.2'
+ext.versionDagger = '2.20'
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "io.reactivex.rxjava2:rxjava:$versionRx"
+    implementation "com.google.dagger:dagger-android-support:$versionDagger"
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
