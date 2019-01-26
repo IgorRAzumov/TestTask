@@ -10,7 +10,7 @@ import javax.inject.Inject;
 public class WeatherRepository implements IWeatherRepository {
     private final WeatherApi weatherApi;
 
-    
+
     public WeatherRepository(WeatherApi weatherApi) {
         this.weatherApi = weatherApi;
     }
