@@ -1,6 +1,7 @@
 package com.example.testtask.di;
 
 
+import com.example.data.api.WeatherApi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -18,9 +19,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkModule {
     private static final String WEATHER_URL = "https://api.weather.yandex.ru/v1/";
 
+    @Provides
+    public WeatherApi weatherApi(Retrofit retrofit) {
+        return retrofit.create(WeatherApi.class);
+    }
 
     @Provides
-    public Retrofit retrofit(@Named("weatherUrl") String url,
+    public Retrofit retrofit(String url,
                              @Named("interceptOkHttp") OkHttpClient client,
                              RxJava2CallAdapterFactory rxJava2CallAdapterFactory,
                              GsonConverterFactory gsonConverterFactory) {
@@ -32,8 +37,6 @@ public class NetworkModule {
                 .build();
     }
 
-
-    @Named("weatherUrl")
     @Provides
     public String weatherUrl() {
         return WEATHER_URL;

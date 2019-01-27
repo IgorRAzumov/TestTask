@@ -4,4 +4,8 @@
     <string name="common_password">Пароль</string>
     <string name="common_entry">Войти</string>
     <string name="sign_in_authorisation">Авторизация</string>
+    <string name="common_create">Создать</string>
+    <string name="error_invalid_email_hint">Некорректный адрес электронной почты</string>
+    <string name="error_ivalid_password_hint">Некорректный пароль. Ващ пароль должен содержать минимум 6 символов,из них: 1 строчная буква, 1 заглавная буква, 1 цифра.</string>
+    <string name="sign_in_error_data_validate">Для продолжения проверьте правильность заполнения полей</string>
 </resources>

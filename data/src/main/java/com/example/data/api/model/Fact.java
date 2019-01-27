@@ -57,9 +57,6 @@ public class Fact {
     @SerializedName("obs_time")
     @Expose
     private Integer obsTime;
-    @SerializedName("accum_prec")
-    @Expose
-    private AccumPrec accumPrec;
     @SerializedName("source")
     @Expose
     private String source;
@@ -198,14 +195,6 @@ public class Fact {
 
     public void setObsTime(Integer obsTime) {
         this.obsTime = obsTime;
-    }
-
-    public AccumPrec getAccumPrec() {
-        return accumPrec;
-    }
-
-    public void setAccumPrec(AccumPrec accumPrec) {
-        this.accumPrec = accumPrec;
     }
 
     public String getSource() {

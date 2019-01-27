@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_default_elevation">4dp</dimen>
+    <dimen name="toolbar_pre_lollipop_shadow_height">1dp</dimen>
+    <dimen name="sign_in_content_width">288dp</dimen>
+    <dimen name="sign_in_content_margin_start">32dp</dimen>
+    <dimen name="sign_in_content_margin_top">8dp</dimen>
+    <dimen name="sign_in_content_margin_end">32dp</dimen>
+    <dimen name="sign_in_password_margin_top">8dp</dimen>
+    <dimen name="sign_in_sign_in_bt_margin_top">24dp</dimen>
+</resources>

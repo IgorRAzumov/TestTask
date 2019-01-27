@@ -7,7 +7,6 @@ import com.example.testtask.di.DaggerAppComponent;
 
 
 public class AppDelegate extends Application {
-
     private static AppComponent appComponent;
 
     @Override

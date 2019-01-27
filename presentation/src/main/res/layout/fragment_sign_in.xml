@@ -1,67 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sv_fr_sign_in_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.auth.sigi_in.SignInFragment">
+    android:fillViewport="true"
+    tools:context=".ui.fragment.auth.sign_in.SignInFragment">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_fr_sign_in"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/ctl_fr_sign_in_root_constraint"
         android:layout_width="match_parent"
-        android:background="@color/white"
-        android:layout_height="?attr/actionBarSize"
-        app:navigationIcon="?attr/homeAsUpIndicator"
-        app:titleTextColor="#414141"
-        app:title="@string/sign_in_authorisation"/>
-
-    <LinearLayout
-        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:orientation="vertical">
+        android:background="@color/white">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/til_fr_sign_in_login"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_fr_sign_in"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="#6e6e6e"
-            android:hint="@string/common_email" >
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/white"
+            android:elevation="@dimen/toolbar_default_elevation"
+            android:theme="@style/ToolbarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:title="@string/sign_in_authorisation"
+            app:titleTextColor="@color/greyish_brown"
+            tools:targetApi="lollipop" />
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/tet_fr_sign_in_login"
+        <View
+            android:id="@+id/vi_fr_sign_in_toolbar_shadow"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/toolbar_pre_lollipop_shadow_height"
+            android:background="@color/gray_84"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_fr_sign_in" />
+
+        <LinearLayout
+            android:layout_width="@dimen/sign_in_content_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/sign_in_content_margin_start"
+            android:layout_marginTop="@dimen/sign_in_content_margin_top"
+            android:layout_marginEnd="@dimen/sign_in_content_margin_end"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.491"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tb_fr_sign_in"
+            app:layout_constraintVertical_bias="0.325">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_fr_sign_in_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:singleLine="true" />
-        </android.support.design.widget.TextInputLayout>
+                android:hint="@string/common_email"
+                android:textColorHint="@color/gray_43"
+                android:theme="@style/AppTheme.TextInputStyle"
+                app:errorTextAppearance="@style/TextInputErrorStyle">
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/til_fr_sign_in_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColorHint="#6e6e6e"
-            android:hint="@string/common_password">
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/tet_fr_sign_in_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/tet_fr_sign_in_password"
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_fr_sign_in_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:drawableEnd="@drawable/ic_password"/>
-        </android.support.design.widget.TextInputLayout>
+                android:layout_marginTop="@dimen/sign_in_password_margin_top"
+                android:hint="@string/common_password"
+                android:textColorHint="@color/gray_43"
+                android:theme="@style/AppTheme.TextInputStyle"
+                app:errorEnabled="true"
+                app:errorTextAppearance="@style/TextInputErrorStyle">
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/abt_fr_sign_in_sign_in"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/login_button_background"
-            android:gravity="center"
-            android:text="@string/common_entry"
-            android:textAllCaps="true"
-            android:textColor="#ffffff" />
-    </LinearLayout>
-</FrameLayout>
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/tet_fr_sign_in_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_password_default"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/abt_fr_sign_in_sign_in"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sign_in_sign_in_bt_margin_top"
+                android:background="@drawable/login_button_background"
+                android:gravity="center"
+                android:text="@string/common_entry"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

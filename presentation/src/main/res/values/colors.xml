@@ -3,5 +3,13 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="white">#ffffff</color>
+    <color name="white">#FFFFFF</color>
+    <color name="picton_blue">#4E92DF</color>
+    <color name="white_smoke">#F4F4F4</color>
+    <color name="orange_app">#FF9B00</color>
+    <color name="gray_84">#D6D6D6</color>
+    <color name="gray_43">#6E6E6E</color>
+    <color name="red_a700">#D50000</color>
+    <color name="transparent_black_1">#11000000</color>
+    <color name="greyish_brown">#414141</color>
 </resources>
