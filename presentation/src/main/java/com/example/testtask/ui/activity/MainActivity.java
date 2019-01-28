@@ -38,10 +38,10 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
 
     @Override
     public void initUi() {
-        setStatusBarColor();
+        setStatusBarLightColorWithBlackIcons();
     }
 
-    private void setStatusBarColor() {
+    private void setStatusBarLightColorWithBlackIcons() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             int uiFlags = getWindow().getDecorView().getSystemUiVisibility();
             uiFlags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;

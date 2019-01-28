@@ -9,6 +9,7 @@ import com.example.domain.model.error.InvalidAuthDataException;
 import com.example.domain.model.weather.WeatherForecast;
 
 import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
 
@@ -34,13 +35,14 @@ public class SignInPresenter extends MvpPresenter<SignInView> {
 
     private final Scheduler scheduler;
     private final CompositeDisposable compositeDisposable;
-
-    private boolean loginError;
-    private boolean passwordError;
+    private final AtomicBoolean loginError;
+    private final AtomicBoolean passwordError;
 
     SignInPresenter(Scheduler mainThread) {
         this.scheduler = mainThread;
         compositeDisposable = new CompositeDisposable();
+        loginError = new AtomicBoolean();
+        passwordError = new AtomicBoolean();
     }
 
     @Override
@@ -50,21 +52,21 @@ public class SignInPresenter extends MvpPresenter<SignInView> {
     }
 
     void loginTextFocusChanged(boolean hasFocus) {
-        if (hasFocus && loginError) {
+        if (hasFocus && loginError.get()) {
             getViewState().hideLoginError();
-            loginError = false;
+            loginError.set(false);
         }
     }
 
     void passwordTextFocusChanged(boolean hasFocus) {
         if (hasFocus) {
-            if (passwordError) {
+            if (passwordError.get()) {
                 getViewState().hidePasswordError();
-                passwordError = false;
+                passwordError.set(false);
             }
             getViewState().showActivePasswordImage();
         } else {
-            if (!passwordError) {
+            if (!passwordError.get()) {
                 getViewState().showDefaultPasswordImage();
             }
         }
@@ -99,10 +101,9 @@ public class SignInPresenter extends MvpPresenter<SignInView> {
                         .flatMap(isValid -> dataValidatorInteractor.checkAuthPassword(password))
                         .observeOn(scheduler)
                         .doOnSuccess(isValid -> passwordCheckCompleted(isValid, password))
-                        .filter(isValid ->!loginError&&!passwordError)
+                        .filter(isValid -> !loginError.get() && !passwordError.get())
                         .observeOn(Schedulers.io())
-                        .toSingle()
-                        .flatMap(isValid -> weatherForecastInteractor.getWeatherByLatLang(DUMMY_LATITUDE,
+                        .flatMapSingle(isValid -> weatherForecastInteractor.getWeatherByLatLang(DUMMY_LATITUDE,
                                 DUMMY_LONGITUDE))
                         .observeOn(scheduler)
                         .subscribe(weatherForecast -> getViewState()
@@ -140,16 +141,16 @@ public class SignInPresenter extends MvpPresenter<SignInView> {
     }
 
     private void loginInvalid() {
-        if (!loginError) {
+        if (!loginError.get()) {
             getViewState().showLoginError();
-            loginError = true;
+            loginError.set(true);
         }
     }
 
     private void loginValid() {
-        if (loginError) {
+        if (loginError.get()) {
             getViewState().hideLoginError();
-            loginError = false;
+            loginError.set(false);
         }
     }
 
@@ -164,25 +165,25 @@ public class SignInPresenter extends MvpPresenter<SignInView> {
     }
 
     private void passwordInvalid() {
-        if (!passwordError) {
+        if (!passwordError.get()) {
             getViewState().showPasswordError();
             getViewState().showErrorPasswordImage();
-            passwordError = true;
+            passwordError.set(true);
         }
     }
 
     private void passwordValid() {
-        if (passwordError) {
+        if (passwordError.get()) {
             getViewState().hidePasswordError();
             getViewState().hideErrorPasswordImage();
-            passwordError = false;
+            passwordError.set(false);
         }
     }
 
     private String createForecastString(WeatherForecast weatherForecast) {
         return String.format(Locale.getDefault(),
                 DUMMY_FORECAST_TEMPLATE,
-                DUMMY_CITY, weatherForecast.getTemperature(), weatherForecast.getRealFeelTtemperature(),
+                DUMMY_CITY, weatherForecast.getTemperature(), weatherForecast.getRealFeelTemperature(),
                 weatherForecast.getHumidity(), weatherForecast.getPressure());
     }
 }

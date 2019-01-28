@@ -1,4 +1,4 @@
-package com.example.testtask.di;
+package com.example.testtask.di.module;
 
 
 import com.example.data.api.WeatherApi;
@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import javax.inject.Named;
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -20,6 +21,7 @@ public class NetworkModule {
     private static final String WEATHER_URL = "https://api.weather.yandex.ru/v1/";
 
     @Provides
+    @Singleton
     public WeatherApi weatherApi(Retrofit retrofit) {
         return retrofit.create(WeatherApi.class);
     }

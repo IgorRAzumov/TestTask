@@ -26,6 +26,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 import com.example.testtask.AppDelegate;
 import com.example.testtask.R;
+import com.example.testtask.di.module.AuthModule;
 import com.jakewharton.rxbinding2.view.RxView;
 
 import java.util.Objects;
@@ -72,8 +73,9 @@ public class SignInFragment extends MvpAppCompatFragment implements SignInView {
     @BindColor(R.color.red_a700)
     int redAccent;
 
+    private final CompositeDisposable compositeDisposable;
+
     private Unbinder unbinder;
-    private CompositeDisposable compositeDisposable;
 
     public static SignInFragment newInstance() {
         return new SignInFragment();
@@ -86,7 +88,10 @@ public class SignInFragment extends MvpAppCompatFragment implements SignInView {
     @ProvidePresenter
     SignInPresenter providePresenter() {
         SignInPresenter signInPresenter = new SignInPresenter(AndroidSchedulers.mainThread());
-        AppDelegate.getAppComponent().inject(signInPresenter);
+        ((AppDelegate) Objects.requireNonNull(getContext()).getApplicationContext())
+                .getAppComponent()
+                .getAuthComponent(new AuthModule())
+                .inject(signInPresenter);
         return signInPresenter;
     }
 
@@ -150,7 +155,7 @@ public class SignInFragment extends MvpAppCompatFragment implements SignInView {
 
     @Override
     public void showPasswordError() {
-        passwordInputLayout.setError(getString(R.string.error_ivalid_password_hint));
+        passwordInputLayout.setError(getString(R.string.error_invalid_password_hint));
     }
 
     @Override

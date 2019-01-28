@@ -9,7 +9,6 @@ public class WeatherResponse {
     @Expose
     private Fact fact;
 
-
     public Fact getFact() {
         return fact;
     }
@@ -17,5 +16,4 @@ public class WeatherResponse {
     public void setFact(Fact fact) {
         this.fact = fact;
     }
-
 }

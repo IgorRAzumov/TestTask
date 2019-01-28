@@ -2,7 +2,7 @@ package com.example.domain.model.weather;
 
 public class WeatherForecast {
     private int temperature;
-    private int  realFeelTtemperature;
+    private int realFeelTemperature;
     private int pressure;
     private int  humidity;
 
@@ -19,7 +19,7 @@ public class WeatherForecast {
     }
 
     public WeatherForecast setRealFeelTemperature(int realFeelTemperature) {
-        this.realFeelTtemperature = realFeelTemperature;
+        this.realFeelTemperature = realFeelTemperature;
         return this;
     }
 
@@ -37,8 +37,8 @@ public class WeatherForecast {
         return temperature;
     }
 
-    public int getRealFeelTtemperature() {
-        return realFeelTtemperature;
+    public int getRealFeelTemperature() {
+        return realFeelTemperature;
     }
 
     public int getPressure() {
